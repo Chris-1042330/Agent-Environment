@@ -1,6 +1,6 @@
 const articles = document.getElementById('articles');
 
-if (typeof articles !== 'undefined') {
+if (articles) {
     console.log(123123);
 
     articles.addEventListener('click', (e ) => {
