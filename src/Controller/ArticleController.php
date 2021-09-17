@@ -32,8 +32,8 @@ class ArticleController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
         $article = new Article();
-        $article->setTitle('Keyboard');
-        $article->setBody('aaaaaaaa');
+        $article->setTitle('');
+        $article->setBody('');
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($article);
