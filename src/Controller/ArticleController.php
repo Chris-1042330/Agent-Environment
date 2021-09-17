@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ArticleController extends AbstractController
 {
     /**
-     *@Route("/adm/article", name="article")
+     *@Route("/article", name="article")
      */
     public function index(): Response{
         $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
@@ -24,7 +24,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/adm/article/save", name="article_save")
+     * @Route("/article/save", name="article_save")
      */
     public function save(): Response{
         // you can fetch the EntityManager via $this->getDoctrine()
@@ -45,7 +45,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/adm/article/edit/{id}", name="article_edit")
+     * @Route("/article/edit/{id}", name="article_edit")
      * @Method({"GET", "POST"})
      */
     public function edit(Request $request, $id): Response{
@@ -73,7 +73,7 @@ class ArticleController extends AbstractController
         return $this->render('articles/edit.html.twig', array('form' => $form->createView()));
     }
     /**
-     * @Route("/adm/article/new", name="article_new")
+     * @Route("/article/new", name="article_new")
      */
     public function new(Request $request): Response{
         $article = new Article();
@@ -101,7 +101,7 @@ class ArticleController extends AbstractController
         return $this->render('articles/new.html.twig', array('form' => $form->createView()));
     }
     /**
-     * @Route("/adm/article/delete/{id}")
+     * @Route("/article/delete/{id}")
      */
     public function delete(Request $request, $id){
         $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
@@ -114,7 +114,7 @@ class ArticleController extends AbstractController
         $response->send();
     }
     /**
-     * @Route("/adm/article/{id}", name="article_show")
+     * @Route("/article/{id}", name="article_show")
      */
     public function show(int $id, ArticleRepository $articleRepository): Response    {
         $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
