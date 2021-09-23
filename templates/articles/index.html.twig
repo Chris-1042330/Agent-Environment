@@ -1,25 +1,30 @@
 {% extends 'base.html.twig' %}
+{% block title %}Articles - Agent Environment{% endblock %}
 
-{% block title %}<h1>aaaaaa</h1>{% endblock %}
 {% block body %}
-    <h1>omg its</h1>
-        {% if articles %}
-        <table class="table table-striped">
+    {% if articles %}
+        <table id="articles" class="table table-striped">
             <thead>
                 <tr>
-                    <th>Hoi</th>
-                    <th>Aaa</th>
+                    <th>Article Title</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 {% for article in articles %}
                     <tr>
-                        <td>{{ article }}</td>
-                        <td><a href="/article/1" class="btn btn-dark"> Aaa</a></td>
+                        <td>{{ article.title }}</td>
+                        <td>
+                            <a href="/article/{{ article.id }}" class="btn btn-dark">Bekijk</a>
+                            <a href="/article/edit/{{ article.id }}" class="btn btn-white">Bewerken</a>
+                            <a href="#" class="btn btn-danger delete-article" data-id="{{ article.id }}">Verwijder</a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-
-        {% endif %}
+    {% endif %}
+{% endblock %}
+{% block javascripts %}
+    <script src="/js/article.js"></script>
 {% endblock %}
