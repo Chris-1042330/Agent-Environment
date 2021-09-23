@@ -10,13 +10,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Content
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="content_id")
+     * @ORM\JoinColumn(nullable=false)
      * @ORM\Column(type="integer")
      */
     private $id;
-
     /**
      * @ORM\Column(type="integer")
      */
@@ -42,11 +44,18 @@ class Content
      */
     private $image;
 
-    public function getId(): ?int
+    public function getId(): ?Category
     {
         return $this->id;
     }
 
+    public function setId(?Category $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+    
     public function getUserId(): ?int
     {
         return $this->user_id;
