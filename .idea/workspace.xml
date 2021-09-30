@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="384cc61d-92a9-46bd-8c66-80713af793e2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/AgentEnvironment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AgentEnvironment.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="384cc61d-92a9-46bd-8c66-80713af793e2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,7 +146,6 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
-      <path value="$PROJECT_DIR$/vendor/symfonycasts/verify-email-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1yX8QFizdrjcUwiAIuQCW8zx00P" />
@@ -180,7 +175,7 @@
       <option name="presentableId" value="Default" />
       <updated>1632386556609</updated>
       <workItem from="1632386558994" duration="105000" />
-      <workItem from="1632485562197" duration="1445000" />
+      <workItem from="1632485562197" duration="861000" />
     </task>
     <servers />
   </component>
