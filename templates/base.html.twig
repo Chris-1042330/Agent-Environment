@@ -2,9 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+        <title>{% block title %}Agent Environment{% endblock %}</title>
+
         {% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
@@ -12,12 +11,36 @@
 
     </head>
     <body>
-    {% include('inc/navbar.html.twig') %}
-        {% block body %}{% endblock %}
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-dark bg-body mb-3">
+                <section class="container">
+                    <a href="{{ path('home') }}" class="navbar-brand">Agent Environment</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+                        <span class="navbar-toggle-icon"></span>
+                    </button>
+                    <section class="collapse navbar-collapse" id="mobile-nav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a href="/article/new" class="nav-link">New Article</a>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+            </nav>
+        </header>
+        <main>
+            <section class="container">
+                {% block body %}{% endblock %}
+            </section>
+        </main>
+        <footer class="fixed-bottom">
+            <section class="container">
+                askdaksdjoiasd
+            </section>
+        </footer>
     </body>
 
-    {% block javascripts %}
-        {#{{ encore_entry_script_tags('app') }}#}
-    {% endblock %}
+    {% block javascripts %}{% endblock %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
 </html>
