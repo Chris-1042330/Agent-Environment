@@ -2,6 +2,7 @@
 {% block title %}Articles - Agent Environment{% endblock %}
 
 {% block body %}
+<section class="container">
     {% if articles %}
         <table id="articles" class="table table-striped">
             <thead>
@@ -24,6 +25,7 @@
             </tbody>
         </table>
     {% endif %}
+</section>com
 {% endblock %}
 {% block javascripts %}
     <script src="/js/article.js"></script>
