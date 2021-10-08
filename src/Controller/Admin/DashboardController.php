@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Article;
 use App\Entity\Calender;
 use App\Entity\Category;
+use App\Entity\ContactFormEntity;
 use App\Entity\Content;
 
 use App\Entity\Department;
@@ -66,7 +67,8 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Partners', 'fas fa-address-book', Partner::class),
             MenuItem::linkToCrud('Projects', 'fas fa-folder', Project::class),
             MenuItem::linkToCrud('Type', 'fas fa-code', Type::class),
-            MenuItem::linkToCrud('Users', 'fas fa-user', User::class)
+            MenuItem::linkToCrud('Users', 'fas fa-user', User::class),
+            MenuItem::linkToCrud('Contact', 'fas fa-phone', ContactFormEntity::class)
         ]);
 
         yield MenuItem::linkToLogout('Logout', 'fa fa-user');
