@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Article;
 use App\Entity\Calender;
 use App\Entity\Category;
 use App\Entity\ContactFormEntity;
@@ -60,10 +59,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linktoDashboard('Account', 'fa fa-address-card');
         yield MenuItem::subMenu('Database Settings', 'fa fa-database')->setSubItems([
-            MenuItem::linkToCrud('Articles', 'fas fa-file-alt', Article::class),
             MenuItem::linkToCrud('Calenders', 'fas fa-calendar', Calender::class),
             MenuItem::linkToCrud('Categories', 'fas fa-archive', Category::class),
-            MenuItem::linkToCrud('Contents', 'fas fa-file', Content::class),
+            MenuItem::linkToCrud('Content', 'fas fa-file', Content::class),
             MenuItem::linkToCrud('Departments', 'fas fa-building', Department::class),
             MenuItem::linkToCrud('Partners', 'fas fa-address-book', Partner::class),
             MenuItem::linkToCrud('Projects', 'fas fa-folder', Project::class),

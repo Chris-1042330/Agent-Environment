@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
-use App\Repository\ArticleRepository;
+use App\Entity\Content;
+use App\Repository\ContentRepository;
 use Doctrine\DBAL\Types\TextType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,49 +13,49 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ArticleController extends AbstractController
+class ContentController extends AbstractController
 {
     /**
-     *@Route("/article", name="article")
+     *@Route("/content", name="content")
      */
     public function index(): Response{
-        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
-        return $this->render('articles/index.html.twig', array('articles' => $articles));
+        $contents = $this->getDoctrine()->getRepository(Content::class)->findAll();
+        return $this->render('content/index.html.twig', array('content' => $contents));
     }
 
     /**
-     * @Route("/article/save", name="article_save")
+     * @Route("/content/save", name="content_save")
      */
     public function save(): Response{
         // you can fetch the EntityManager via $this->getDoctrine()
         // or you can add an argument to the action: createProduct(EntityManagerInterface $entityManager)
         $entityManager = $this->getDoctrine()->getManager();
 
-        $article = new Article();
-        $article->setTitle('');
-        $article->setBody('');
+        $content = new Content();
+        $content->setTitle('');
+        $content->setBody('');
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
-        $entityManager->persist($article);
+        $entityManager->persist($content);
 
         // actually executes the queries (i.e. the INSERT query)
         $entityManager->flush();
 
-        return new Response('Saved new product with id '.$article->getId());
+        return new Response('Saved new product with id '.$content->getId());
     }
 
     /**
-     * @Route("/article/edit/{id}", name="article_edit")
+     * @Route("/content/edit/{id}", name="content_edit")
      * @Method({"GET", "POST"})
      */
     public function edit(Request $request, $id): Response{
-        $article = new Article();
-        $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
+        $content = new Content();
+        $content = $this->getDoctrine()->getRepository(Content::class)->find($id);
 
-        $form = $this->createFormBuilder($article)
+        $form = $this->createFormBuilder($content)
             ->add('title', \Symfony\Component\Form\Extension\Core\Type\TextType::class, array('attr' => array('class' => 'form-control')
             ))
-            ->add('body', TextareaType::class, array('required' => false, 'attr' => array('class' => 'form-control')
+            ->add('content', TextareaType::class, array('required' => false, 'attr' => array('class' => 'form-control')
             ))
             ->add('save', SubmitType::class, array('label' => 'Save', 'attr' => array('class' => 'btn btn-primary mt-3')
             ))
@@ -67,18 +67,18 @@ class ArticleController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
 
-            return $this->redirectToRoute('article');
+            return $this->redirectToRoute('content');
         }
 
-        return $this->render('articles/edit.html.twig', array('form' => $form->createView()));
+        return $this->render('content/edit.html.twig', array('form' => $form->createView()));
     }
     /**
-     * @Route("/article/new", name="article_new")
+     * @Route("/content/new", name="content_new")
      */
     public function new(Request $request): Response{
-        $article = new Article();
+        $content = new Content();
 
-        $form = $this->createFormBuilder($article)
+        $form = $this->createFormBuilder($content)
             ->add('title', \Symfony\Component\Form\Extension\Core\Type\TextType::class, array('attr' => array('class' => 'form-control')
             ))
             ->add('body', TextareaType::class, array('required' => false, 'attr' => array('class' => 'form-control')
@@ -90,35 +90,35 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
-            $article = $form->getData();
+            $content = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($article);
+            $entityManager->persist($content);
             $entityManager->flush();
 
-            return $this->redirectToRoute('article');
+            return $this->redirectToRoute('content');
         }
 
-        return $this->render('articles/new.html.twig', array('form' => $form->createView()));
+        return $this->render('content/new.html.twig', array('form' => $form->createView()));
     }
     /**
-     * @Route("/article/delete/{id}")
+     * @Route("/content/delete/{id}")
      */
     public function delete(Request $request, $id){
-        $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
+        $content = $this->getDoctrine()->getRepository(Content::class)->find($id);
 
         $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->remove($article);
+        $entityManager->remove($content);
         $entityManager->flush();
 
         $response = new Response();
         $response->send();
     }
     /**
-     * @Route("/article/{id}", name="article_show")
+     * @Route("/content/{id}", name="content_show")
      */
-    public function show(int $id, ArticleRepository $articleRepository): Response    {
-        $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
-        return $this->render('articles/show.html.twig', array('article' => $article));
+    public function show(int $id, ContentRepository $contentRepository): Response    {
+        $content = $this->getDoctrine()->getRepository(Content::class)->find($id);
+        return $this->render('content/show.html.twig', array('content' => $content));
     }
 
 }

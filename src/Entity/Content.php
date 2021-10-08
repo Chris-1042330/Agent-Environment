@@ -44,12 +44,12 @@ class Content
      */
     private $image;
 
-    public function getId(): ?Category
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(?Category $id): self
+    public function setId(int $id): self
     {
         $this->id = $id;
 

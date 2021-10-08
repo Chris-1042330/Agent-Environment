@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ content.title }}{% endblock %}
+{% block body %}
+    <section class="container">
+        <h1>{{ content.title }}</h1>
+        <p>{{ content.content }}</p><br>
+        <a href="javascript:history.back()" class="btn btn-dark">Go back</a>
+    </section>
+{% endblock %}

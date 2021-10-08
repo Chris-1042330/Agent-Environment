@@ -1,4 +1,4 @@
-const articles = document.getElementById('articles');
+const articles = document.getElementById('content');
 
 if (articles) {
     console.log(123123);

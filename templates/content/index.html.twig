@@ -3,8 +3,8 @@
 
 {% block body %}
 <section class="container">
-    {% if articles %}
-        <table id="articles" class="table table-striped">
+    {% if content %}
+        <table id="contentz" class="table table-striped">
             <thead>
                 <tr>
                     <th>Article Title</th>
@@ -12,12 +12,12 @@
                 </tr>
             </thead>
             <tbody>
-                {% for article in articles %}
+                {% for article in content %}
                     <tr>
                         <td>{{ article.title }}</td>
                         <td>
-                            <a href="/article/{{ article.id }}" class="btn btn-dark">Bekijk</a>
-                            <a href="/article/edit/{{ article.id }}" class="btn btn-white">Bewerken</a>
+                            <a href="/content/{{ article.id }}" class="btn btn-dark">Bekijk</a>
+                            <a href="/content/edit/{{ article.id }}" class="btn btn-white">Bewerken</a>
                             <a href="#" class="btn btn-danger delete-article" data-id="{{ article.id }}">Verwijder</a>
                         </td>
                     </tr>
@@ -25,7 +25,7 @@
             </tbody>
         </table>
     {% endif %}
-</section>com
+</section>
 {% endblock %}
 {% block javascripts %}
     <script src="/js/article.js"></script>
