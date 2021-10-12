@@ -1,4 +1,4 @@
-const articles = document.getElementById('content');
+const articles = document.getElementById('contentz');
 
 if (articles) {
     console.log(123123);
@@ -8,7 +8,7 @@ if (articles) {
             if(confirm('Are you sure?')){
                 const id = e.target.getAttribute('data-id');
 
-                fetch(`/article/delete/${id}`,{
+                fetch(`/artikelen/delete/${id}`,{
                     method: 'DELETE'
                 }).then(res => window.location.reload());
             }

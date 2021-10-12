@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContentController extends AbstractController
 {
     /**
-     *@Route("/content", name="content")
+     *@Route("/artikelen", name="content")
      */
     public function index(): Response{
         $contents = $this->getDoctrine()->getRepository(Content::class)->findAll();
@@ -24,7 +24,7 @@ class ContentController extends AbstractController
     }
 
     /**
-     * @Route("/content/save", name="content_save")
+     * @Route("/artikelen/save", name="content_save")
      */
     public function save(): Response{
         // you can fetch the EntityManager via $this->getDoctrine()
@@ -45,7 +45,7 @@ class ContentController extends AbstractController
     }
 
     /**
-     * @Route("/content/edit/{id}", name="content_edit")
+     * @Route("/artikelen/edit/{id}", name="content_edit")
      * @Method({"GET", "POST"})
      */
     public function edit(Request $request, $id): Response{
@@ -58,6 +58,8 @@ class ContentController extends AbstractController
             ->add('content', TextareaType::class, array('required' => false, 'attr' => array('class' => 'form-control')
             ))
             ->add('save', SubmitType::class, array('label' => 'Save', 'attr' => array('class' => 'btn btn-primary mt-3')
+            ))
+            ->add('delete', SubmitType::class, array('label' => 'Delete', 'attr' => array('class' => 'btn btn-danger mt-3')
             ))
             ->getForm();
 
@@ -73,7 +75,7 @@ class ContentController extends AbstractController
         return $this->render('content/edit.html.twig', array('form' => $form->createView()));
     }
     /**
-     * @Route("/content/new", name="content_new")
+     * @Route("/artikelen/new", name="content_new")
      */
     public function new(Request $request): Response{
         $content = new Content();
@@ -101,7 +103,7 @@ class ContentController extends AbstractController
         return $this->render('content/new.html.twig', array('form' => $form->createView()));
     }
     /**
-     * @Route("/content/delete/{id}")
+     * @Route("/artikelen/delete/{id}")
      */
     public function delete(Request $request, $id){
         $content = $this->getDoctrine()->getRepository(Content::class)->find($id);
@@ -114,7 +116,7 @@ class ContentController extends AbstractController
         $response->send();
     }
     /**
-     * @Route("/content/{id}", name="content_show")
+     * @Route("/artikelen/{id}", name="content_show")
      */
     public function show(int $id, ContentRepository $contentRepository): Response    {
         $content = $this->getDoctrine()->getRepository(Content::class)->find($id);

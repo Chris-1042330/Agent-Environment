@@ -1,31 +1,58 @@
 {% extends 'base.html.twig' %}
-{% block title %}Articles - Agent Environment{% endblock %}
+{% block title %}Artikelen - Agent Environment{% endblock %}
 
 {% block body %}
 <section class="container">
-    {% if content %}
-        <table id="contentz" class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Article Title</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
+    <h1>Artikelen</h1>
+    <section class="row">
+        <section class="col-lg-3 col-md-3">
+            <ul>
+                <li>Thema's</li>
+                <li>Thema's</li>
+                <li>Thema's</li>
+                <li>Thema's</li>
+            </ul>
+        </section>
+        <section class="col-lg-3 col-md-5">
+            {% if content %}
                 {% for article in content %}
-                    <tr>
-                        <td>{{ article.title }}</td>
-                        <td>
-                            <a href="/content/{{ article.id }}" class="btn btn-dark">Bekijk</a>
-                            <a href="/content/edit/{{ article.id }}" class="btn btn-white">Bewerken</a>
-                            <a href="#" class="btn btn-danger delete-article" data-id="{{ article.id }}">Verwijder</a>
-                        </td>
-                    </tr>
+                    <div class="card" id="contentz" style="width: 15rem;">
+                        <img class="card-img-top" src="" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.title }}</h5><br>
+                            {% if app.user %}
+                                <a href="/artikelen/edit/{{ article.id }}" class="btn btn-white">Bewerken</a><br>
+                                <a href="#" class="btn btn-danger delete-article" data-id="{{ article.id }}">Verwijder</a>
+                            {% endif %}
+    {#                        <p class="card-text">{{ article. }}</p>#}
+                            <a href="/artikelen/{{ article.id }}" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
                 {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
+            {% endif %}
+        </section>
+    </section>
 </section>
+{#        <table id="lijst" class="table table-striped">#}
+{#            <thead>#}
+{#                <tr>#}
+{#                    <th>Article Title</th>#}
+{#                    <th>Actions</th>#}
+{#                </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#                {% for article in content %}#}
+{#                    <tr>#}
+{#                        <td>{{ article.title }}</td>#}
+{#                        <td>#}
+{#                            <a href="/content/{{ article.id }}" class="btn btn-dark">Bekijk</a>#}
+{#                            <a href="/content/edit/{{ article.id }}" class="btn btn-white">Bewerken</a>#}
+{#                        </td>#}
+{#                    </tr>#}
+{#                {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    {% endif %}#}
 {% endblock %}
 {% block javascripts %}
     <script src="/js/article.js"></script>
