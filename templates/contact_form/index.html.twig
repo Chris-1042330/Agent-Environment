@@ -12,6 +12,8 @@
                 <th>Subject</th>
                 <th>Email</th>
                 <th>Body</th>
+                <th>Contact Type</th>
+                <th>Naam</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -22,6 +24,8 @@
                 <td>{{ contact_form_entity.Subject }}</td>
                 <td>{{ contact_form_entity.Email }}</td>
                 <td>{{ contact_form_entity.Body }}</td>
+                <td>{{ contact_form_entity.ContactType }}</td>
+                <td>{{ contact_form_entity.Name }}</td>
                 <td>
                     <a href="{{ path('contact_form_show', {'id': contact_form_entity.id}) }}">show</a>
                     <a href="{{ path('contact_form_edit', {'id': contact_form_entity.id}) }}">edit</a>

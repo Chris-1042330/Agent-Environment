@@ -28,9 +28,19 @@ class ContactFormEntity
     private $Email;
 
     /**
-     * @ORM\Column(type="string", length=3000)
+     * @ORM\Column(type="text")
      */
     private $Body;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $ContactType;
 
     public function getId(): ?int
     {
@@ -69,6 +79,30 @@ class ContactFormEntity
     public function setBody(string $Body): self
     {
         $this->Body = $Body;
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->Name;
+    }
+
+    public function setName(string $Name): self
+    {
+        $this->Name = $Name;
+
+        return $this;
+    }
+
+    public function getContactType(): ?string
+    {
+        return $this->ContactType;
+    }
+
+    public function setContactType(string $ContactType): self
+    {
+        $this->ContactType = $ContactType;
 
         return $this;
     }
